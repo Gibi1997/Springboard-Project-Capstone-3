@@ -1,0 +1,75 @@
+MODEL METRICS FILE:
+
+Model Overview:
+   Model Name: Logistic Regression
+   Library: scikit-learn
+   Objective: Binary Classification (Fake News Detection)
+   Evaluation Method: Stratified Cross-Validation (5-fold)
+   Primary Metric: F1-score
+
+Final model features:
+   Text Embedding Features:
+   Dense vector representations generated using Word2Vec embeddings trained on the training dataset for the feature 'lemmatized_content'.
+   
+   Engineered Numeric Features:
+   1.content_length
+   2.avg_word_length
+   3.unique_word_ratio
+
+   Toxicity Features (Detoxify):
+   1.toxicity
+   2.severe_toxicity
+   3.obscene
+   4.threat
+   5.insult
+   6.identity_attack
+
+   These features capture linguistic structure, semantic meaning, and toxicity patterns within news articles.
+
+Hyperparameters:
+   The final Logistic Regression model used the following optimized hyperparameters:
+     'C': np.float64(2.9753909473493882)
+     'penalty': 'l2'
+     'solver': 'liblinear'
+
+   These parameters were selected using RandomizedSearchCV to maximize model performance.
+
+Parameters:
+   During training, the Logistic Regression model learned:
+     Feature coefficients (weights)
+     Intercept (bias term)
+  
+  These parameters determine how each feature contributes to the probability of predicting True News (1) or Fake News (0).
+
+Performance metrics:
+    Before parameter tuning:
+      Training scores (mean across folds):
+         Accuracy: 0.9799
+         Precision: 0.9770
+         Recall: 0.9812
+         F1-score: 0.9791
+         ROC-AUC: 0.9978
+     Validation scores (mean across folds):
+         Accuracy: 0.9784
+         Precision: 0.9748
+         Recall: 0.9804
+         F1-score: 0.9776
+         ROC-AUC: 0.9975
+
+   After parameter tuning:
+    Best CV F1-score: 0.9782467742538122
+
+--- Logistic Regression Test Performance ---
+              precision    recall  f1-score   support
+
+           0       0.98      0.97      0.98      4525
+           1       0.97      0.98      0.98      4187
+
+    accuracy                           0.98      8712
+   macro avg       0.98      0.98      0.98      8712
+weighted avg       0.98      0.98      0.98      8712
+
+Test ROC-AUC: 0.997645329466238
+Confusion Matrix:
+ [[4401  124]
+ [  69 4118]]
