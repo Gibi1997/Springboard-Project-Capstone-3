@@ -167,8 +167,6 @@ Features associated with **Fake News**:
 - toxicity
 - severe_toxicity
 
-The final model was **saved and successfully reloaded**, confirming **model reproducibility**.
-
 ---
 
 ## Recommendations
